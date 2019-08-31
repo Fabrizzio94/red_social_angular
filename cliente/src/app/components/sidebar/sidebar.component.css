@@ -1,0 +1,39 @@
+.sidebar-32 {
+    /*margin-top: 60px;
+    
+    left: 18px;
+    width: 28%;
+
+    position: fixed;
+    left: 66%;*/
+}
+#user-card {
+    position: relative;
+    width: 100%;
+    
+}
+#sidebarContainer {
+    /*
+    position: fixed;*/
+}
+#new-publication {
+    padding: 18px;
+    /*padding-left: 8px;*/
+    position: relative;
+    top: 39%;
+    left: 10px;
+    width: 100%;
+}
+.icon {
+    color: #72209B;
+    text-align: center !important;
+    margin-bottom: 7px;
+
+}
+.icon a:hover {
+    color: rgba(20, 6, 27, 0.808) !important;
+}
+
+.file-upload {
+    display: none;
+}

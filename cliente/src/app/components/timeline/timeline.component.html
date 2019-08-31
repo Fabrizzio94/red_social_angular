@@ -1,0 +1,95 @@
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 timelineContent" id="">
+            <div class="row">
+                    
+                <h1 class="h1-strong">{{title}} </h1>
+                <button class="btnRefresh btn btn-primary btn-sm" (click)="refresh($event)">Actualizar</button>
+            </div>
+            
+            
+            <div id="publications" class="">
+                <div *ngFor="let publication of publications" class="item-publication">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                        <!-- -->
+                        <div class="row">
+                            <div class="image-user pull-left">
+                                <a href="#">
+                                    <img src="{{url + 'get-image-user/' + publication.user.image}} " *ngIf="publication.user.image">
+                                    <img src="../../../assets/userDefault.png" *ngIf="!publication.user.image">
+                                </a>
+                            </div>
+                            <div class="user-content">
+                                <a [routerLink]="[ '/perfil', publication.user._id ]" class="user-name">
+                                    {{publication.user.name + ' ' + publication.user.surname}}
+                                </a>
+                                &nbsp;&nbsp;      
+                                <span class="date">
+                                    {{ (publication.created_at | amFromUnix) | amLocale: 'es' | amTimeAgo}}
+                                </span>
+                                <!-- <button class="pull-right btn btn-light" *ngIf="publication.user._id == identity._id">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </button>-->
+                                <a href="#myModal{{publication._id}}" role="button" class="pull-right btn btn-large btn-danger Btntrash" data-toggle="modal"
+                                *ngIf="publication.user._id == identity._id">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </a>
+
+                                <!-- Modal HTML -->
+                                <div id="myModal{{publication._id}}" class="modal fade">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                <h4 class="modal-title">¿Estás seguro de querer borrar esta publicación?</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Una vez borrada esta publicación, no se podra recuperar</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                                <button type="button" class="btn btn-primary" 
+                                                (click)="deletePublication(publication._id)"
+                                                    data-dismiss="modal">Aceptar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                            <!-- -->
+                            <div class="publication-content row">
+                                <h4 class="publication-text">
+                                    {{publication.text}}
+                                </h4>
+                            </div>
+                            <div class="col-lg-12 pub-image" *ngIf="publication.file && publication.file != 'null'">
+                                <img id="image-pub" src="{{ url + 'get-image-pub/' + publication.file }}" class="col-lg-12"> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 text-center" *ngIf="publications && publications.length">
+                <p>
+                    <button class="btn btn-success" (click)="viewMore()" *ngIf="!noMore">
+                        Ver más
+                    </button>
+                </p>
+            </div>
+            
+            
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 timelineContent">
+                <!-- Side bar -->
+                <sidebar (enviado)="refresh($event)"></sidebar>
+        </div>
+        
+    </div>
+    <div class="clearfix"></div>
+</div>
+<!-- Chat -->
+<app-chat></app-chat>

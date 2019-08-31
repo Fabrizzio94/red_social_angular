@@ -1,0 +1,31 @@
+#publications {
+    min-height: 500px;
+}
+#publications .user-name{
+    font-size: 21px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #444;
+}
+
+#publications .date {
+    color: gray;
+}
+#publications .publication-text {
+    text-align: justify;
+    width: 100%;
+}
+
+.user-content {
+    position: relative;
+    top: 21px;
+}
+
+
+.item-publication .image-user {
+    margin-right: 10px;
+    margin-left: 2px;
+}
+#publications .publication-content {
+    padding: 3px 50px 3px 100px;
+}

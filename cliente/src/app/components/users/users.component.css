@@ -1,0 +1,16 @@
+/* GENTE */
+.gente {
+    float: right !important;
+    /*width: 65% !important; /* borrar classe*/
+    margin-top: 60px;
+}
+.people {
+    min-height: 500px;
+}
+.genteSidebar {
+    margin-top: 60px;
+}
+
+.pull-right {
+    margin-top: 22px;
+}

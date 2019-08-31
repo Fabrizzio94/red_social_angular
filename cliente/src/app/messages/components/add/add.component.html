@@ -1,0 +1,30 @@
+    <div class="row">
+        <div class="col-sm-8 col-md-8 col-lg-8 addMessage">
+            <h3>{{title}}</h3>
+            <div class="alert alert-success" *ngIf="status== 'success'">
+                    Mensaje Enviado! Revisalo en <a [routerLink]="['/mensajes/enviados']">Mensajes enviados</a>
+                </div>
+                <div class="alert alert-danger" *ngIf="status== 'error'">
+                    Error al enviar mensaje!
+                </div>
+            <form #formAdd="ngForm" (ngSubmit)="onSubmit(formAdd)">
+                <p>
+                    <label for="for">Para: </label>
+                    <!-- listado de seguidores -->
+                    <select *ngIf="follows" name="receiver" #receiver="ngModel" [(ngModel)]="message.receiver"
+                    class="form-control" required>
+                        <option *ngFor="let follow of follows" value="{{follow.user._id}}">
+                            {{follow.user.name + ' ' +  follow.user.surname}}
+                        </option>
+                    </select>
+                </p>
+                <p>
+                    <label for="message">Mensaje</label>
+                    <textarea name="text" #text="ngModel" [(ngModel)]="message.text" class="form-control" required>
+                        <span *ngIf="!text.valid && text.touched">Mensaje requerido</span>
+                    </textarea>
+                </p>
+                <input type="submit" value="{{title}}" class="btn btn-success">
+            </form>
+        </div>  
+    </div>
